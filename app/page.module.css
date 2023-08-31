@@ -514,3 +514,81 @@
   top: 2%;
   height: 30vh;
 }
+
+.loader {
+  border: 16px solid#f7d4d4;
+  border-top: 16px solid#ff3232;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  animation: spin 2s linear infinite;
+  margin: auto;
+  background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTesXyB5pQ3XkOeXfkUr9juHFvYrbKsdV52kg131gY4mGyeUS5Ln949tP2j5fP1bJetjwE&usqp=CAU) no-repeat center;
+  position: fixed;
+  top: 30%;
+  left: 40%;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.pageContainer .sideNav {
+  position: fixed;
+  top: 20%;
+  left: 7%;
+}
+
+.pageContainer .sideNav li {
+  margin-bottom: 40px;
+  font-size: 30px;
+}
+
+.pageContainer .sideNav img {
+  height: 40px;
+}
+
+.sideNav li:hover {
+  background: #ddc3c3;
+  color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ee2b2b,
+              0 0 5px #ee2b2b,
+              0 0 5px #ee2b2b,
+              0 0 5px #ee2b2b;
+}
+
+.pageContainer .pageDiv .createBox {
+  position: relative;
+}
+
+.pageContainer .pageDiv .createBox input {
+  width: auto;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #3f3f3f;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #ee2b2b;
+  outline: none;
+  background: transparent;
+}
+.pageContainer .pageDiv .createBox label {
+  position: absolute;
+  top:0;
+  left: 1%; 
+  padding: 10px 0;
+  font-size: 16px;
+  color: #ee2b2b;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.pageContainer .pageDiv .createBox input:focus ~ label,
+.pageContainer .pageDiv .createBox input:valid ~ label {
+  top: -20px;
+  left: 1%;
+  color: #ee2b2b;
+  font-size: 12px;
+}

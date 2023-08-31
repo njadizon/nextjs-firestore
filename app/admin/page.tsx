@@ -6,6 +6,9 @@ import useSWR from "swr";
 
 import "bootstrap/dist/css/bootstrap.css";
 import styles from './../page.module.css';
+import Loading from "../loading";
+import SideNavigation from "../shared/components/side-navigation";
+import SiteLogo from "../shared/components/site-logo";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
@@ -27,16 +30,14 @@ export default function Page() {
     );
 
     if (error) return <p>Failed to fetch {error.toString()}</p>;
-    if (isLoading) return <p>Loading patients...</p>;
-
+    if (isLoading) return <Loading></Loading>
         
     var dataList = data?.data;
 
     return (
         <div className={styles.pageContainer}>
-            <div className={styles.siteLogo}>
-                <img src="https://getvectorlogo.com/wp-content/uploads/2019/01/metropolitan-hospital-vector-logo.png" alt="logo"></img>
-            </div>
+            <SiteLogo></SiteLogo>
+            <SideNavigation></SideNavigation>
 
             
             <div className={styles.pageDiv}>

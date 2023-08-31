@@ -8,6 +8,9 @@ import useSWR from "swr";
 import "bootstrap/dist/css/bootstrap.css";
 import styles from './../../page.module.css';
 import { useEffect } from "react";
+import Loading from "@/app/loading";
+import SideNavigation from "@/app/shared/components/side-navigation";
+import SiteLogo from "@/app/shared/components/site-logo";
 
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -28,27 +31,38 @@ export default function Page({ params }: { params: { id: string } }) {
     );
 
     if (error) return <p>Failed to fetch {error.toString()}</p>;
-    if (isLoading) return <p>Loading details...</p>;
+    if (isLoading) return <Loading></Loading>;
 
 
     return (
         <div className={styles.pageContainer}>
-            <div className={styles.siteLogo}>
-                <img src="https://getvectorlogo.com/wp-content/uploads/2019/01/metropolitan-hospital-vector-logo.png" alt="logo"></img>
-            </div>
+            <SiteLogo></SiteLogo>
+            <SideNavigation></SideNavigation>
 
-
-            
             <div className={styles.pageDiv}>
             <h1>Patient Details</h1>
+            
                 <ul>
-                    <li>{data.firstName}</li>
-                    <li>{data.lastName}</li>
-                    <li>{data.address}</li>
-                    <li>{data.contactNumber}</li>
-                    <li>{data.email}</li>
-                    {/* <li>{data.birthDate.toDateString()}</li> */}
-                    <li>{data.gender}</li>
+                    <li>
+                        <label className="mx-2 my-2"><strong>Name:</strong></label>
+                        {data.lastName}, {data.firstName}
+                    </li>
+                    <li>
+                        <label className="mx-2 my-2"><strong>Address:</strong></label>
+                        {data.address}
+                    </li>
+                    <li>
+                        <label className="mx-2 my-2"><strong>Contact Number:</strong></label>
+                        {data.contactNumber}
+                    </li>
+                    <li>
+                        <label className="mx-2 my-2"><strong>Email Address:</strong></label>
+                        {data.email}
+                    </li>
+                    <li>
+                        <label className="mx-2 my-2"><strong>Gender:</strong></label>
+                        {data.gender}
+                    </li>
                 </ul>
 
                 <button onClick={navigateToPrevious}>
